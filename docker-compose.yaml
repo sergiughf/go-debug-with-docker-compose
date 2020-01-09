@@ -1,0 +1,13 @@
+---
+version: "3.7"
+services:
+  api:
+    build: ./
+    volumes:
+      - .:/go-debug-with-docker-compose
+    environment:
+      PORT: 80
+      GOBIN: /go/bin
+    ports:
+    - "8080:80"
+    command: "CompileDaemon -build='make install' -command='go-debug-with-docker-compose'"
