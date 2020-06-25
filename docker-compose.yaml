@@ -10,4 +10,10 @@ services:
       GOBIN: /go/bin
     ports:
     - "8080:80"
+    - "4000:4000"
     command: "CompileDaemon -build='make install' -command='go-debug-with-docker-compose'"
+    security_opt:
+      - apparmor:unconfined
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE

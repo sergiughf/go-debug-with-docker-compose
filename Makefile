@@ -14,3 +14,7 @@ deps-dev:
 install:
 	@echo "Installing api binary..."
 	@go install -v
+
+debug:
+	@echo "Running go debugger for api binary..."
+	@dlv --listen=:4000 --headless --api-version=2 attach $(shell pidof go-debug-with-docker-compose)
